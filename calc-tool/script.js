@@ -5,6 +5,14 @@ const grades = [
     { subject: "物理", score: Number(prompt("输入物理成绩")) },
 ];
 
-// const cleanScores = (list) => list.filter(g => g.score >= 0 && g.score <= 100);
+const cleanScores = (list) => list.filter(g => g.score >= 0 && g.score <= 100);
 
-// const 
+const avg = (list) => {
+    if (list.length === 0) return 0;
+    return (list.reduce((sum, g) => sum + g.score, 0) / list.length).toFixed(2);
+}
+
+const failed = (list) => list.filter(g => g.score < 60).map(g => g.subject);
+
+console.log(avg(cleanScores(grades)));
+console.log(failed(cleanScores(grades)));
