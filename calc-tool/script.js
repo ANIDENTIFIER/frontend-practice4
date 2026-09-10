@@ -14,5 +14,11 @@ const avg = (list) => {
 
 const failed = (list) => list.filter(g => g.score < 60).map(g => g.subject);
 
-console.log(avg(cleanScores(grades)));
-console.log(failed(cleanScores(grades)));
+const report = (list) => {
+    const valid = cleanScores(list);
+    if (valid.length === 0) return '没有有效成绩';
+
+    return `四个科目平均${avg(valid)}分，不及格名单：${failed(valid).join('、') || '无'}`;
+}
+
+console.log(report(grades));
